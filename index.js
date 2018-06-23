@@ -25,6 +25,20 @@ class User {
   }
 }
 
-const userOne = new User('adibfirman@test.com', 'testing123')
+class Admin extends User {
+  deleteUser(listUser, user) {
+    const users = listUser.filter(u => u.email !== user.email)
 
-userOne.login().updatedScore().updatedScore().updatedScore().logout()
+    console.log(users)
+  }
+}
+
+// register the user
+const userOne = new User('adibfirman01@test.com', 'adibfirman01')
+const userTwo = new User('adibfirman02@test.com', 'adibfirman02')
+
+// register admin user
+const adminUser = new Admin('admin@admin.com', 'admin123')
+const listUser = [userOne, userTwo, adminUser]
+
+adminUser.deleteUser(listUser, userTwo)
