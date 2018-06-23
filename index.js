@@ -1,44 +1,15 @@
-class User {
-  constructor(email, password) { // passing parameter class with function `constructor`
-    this.email = email
-    this.password = password
-    this.score = 0
-  }
+function User(email, password) {
+  this.email = email
+  this.password = password
+  this.online = false
+  this.login = function () {
+    this.online = true
 
-  login () {
-    console.log(this.email, 'has been login')
-
-    return this
-  }
-
-  logout () {
-    console.log(this.email, 'has been logout')
-
-    return this
-  }
-
-  updatedScore () {
-    this.score++
-    console.log(this.email, 'have score is', this.score)
-
-    return this
+    console.log(this.email, 'just login in')
   }
 }
 
-class Admin extends User {
-  deleteUser(listUser, user) {
-    const users = listUser.filter(u => u.email !== user.email)
+const userOne = new User('adib@dib.com', 'dib123')
 
-    console.log(users)
-  }
-}
-
-// register the user
-const userOne = new User('adibfirman01@test.com', 'adibfirman01')
-const userTwo = new User('adibfirman02@test.com', 'adibfirman02')
-
-// register admin user
-const adminUser = new Admin('admin@admin.com', 'admin123')
-const listUser = [userOne, userTwo, adminUser]
-
-adminUser.deleteUser(listUser, userTwo)
+console.log(userOne)
+userOne.login()
